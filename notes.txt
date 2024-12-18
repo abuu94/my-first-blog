@@ -66,3 +66,7 @@ User.objects.all()
  Post.objects.create(author=me, title='Sample title', text='Test')
 <Post: Sample title>
 Post.objects.all()
+
+
+
+python manage.py collectstatic

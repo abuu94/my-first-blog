@@ -1,0 +1,42 @@
+notes: Kuna njia tofauti ikiwa unatumia Chromebook ,Cloud9 or Glitch
+
+
+1.Create Db:
+python manage.py migrate
+
+2.Start server:
+python manage.py runserver
+or python manage.py runserver 0:8000
+
+
+3.Create app:
+python manage.py startapp blob
+
+4. add new created app in settings.py
+'blog'
+
+5.Jenga model object ktk models.py , define model
+Modeling Django:
+Post
+--------
+title
+text
+author
+created_date
+published_date
+
+6. updates changes,  create model
+python manage.py makemigrations blog
+
+
+7. apply to Db
+python manage.py migrate blog
+
+---------------------------------
+
+Credentials: abuu/Mkubwa*94
+
+Admin Page:
+1. create Admin.Superuser
+
+python manage.py createsuperuser

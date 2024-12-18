@@ -50,3 +50,19 @@ pip3.10 install --user pythonanywhere
 pa_autoconfigure_django.py --python=3.10 https://github.com/abuu94/my-first-blog.git
 
 python manage.py createsuperuser
+
+
+--------------------------------------
+Django ORM and QuerySets
+--------------------------------
+python manage.py shell
+
+from blog.models import Post
+Post.objects.all()
+Post.objects.create(author=me, title='Sample title', text='Test')
+from django.contrib.auth.models import User
+User.objects.all()
+ me = User.objects.get(username='abuu')
+ Post.objects.create(author=me, title='Sample title', text='Test')
+<Post: Sample title>
+Post.objects.all()

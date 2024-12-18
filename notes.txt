@@ -40,3 +40,13 @@ Admin Page:
 1. create Admin.Superuser
 
 python manage.py createsuperuser
+
+
+
+
+-------------------------------- Katika Bash ya Python Anywhere:
+pip3.10 install --user pythonanywhere
+
+pa_autoconfigure_django.py --python=3.10 https://github.com/abuu94/my-first-blog.git
+
+python manage.py createsuperuser

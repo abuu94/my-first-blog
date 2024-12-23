@@ -70,3 +70,112 @@ Post.objects.all()
 
 
 python manage.py collectstatic
+
+
+
+     <div class="page-header">
+        {% if user.is_authenticated %}
+            <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+            <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
+        {% else %}
+            <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
+        {% endif %}
+        <h1><a href="/">Django Girls Blog</a></h1>
+    </div>
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-8">
+            {% block content %}
+            {% endblock %}
+            </div>
+        </div>
+    </div>
+
+Ya chini ndio mzuka
+<header class="page-header">
+        <div class="container">
+            {% if user.is_authenticated %}
+            <a href="{% url 'post_new' %}" class="top-menu">
+                <span class="glyphicon glyphicon-plus"></span>
+
+            </a>
+            <a href="{% url 'post_draft_list' %}" class="top-menu">
+                <span class="glyphicon glyphicon-edit"></span>
+            </a>
+            {% else %}
+            <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
+            {% endif %}
+            <h1><a href="/">Zuri-Ideas+ Blog</a></h1>
+        </div>
+    </header>
+    <main class="container">
+        <div class="row">
+            <div class="col-md-8">
+                {% block content%}
+                {% endblock %}
+            </div>
+        </div>
+    </main>
+
+    ---code
+    <header class="page-header">
+        <div class="container">
+            {% if user.is_authenticated %}
+            <a href="{% url 'post_new' %}" class="top-menu">
+                {% include './icons/file-earmark-plus.svg' %}
+            </a>
+            <a href="{% url 'post_draft_list' %}" class="top-menu">
+                <span>Drafts</span>
+            </a>
+            {% else %}
+            <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
+            {% endif %}
+
+
+            <h1><a href="/">Zuri-Ideas+ Blog</a></h1>
+        </div>
+    </header>
+    <main class="container">
+        <div class="row">
+            <div class="col">
+                {% block content%}
+                {% endblock %}
+            </div>
+        </div>
+    </main>
+      <div class="page-header">
+        {% if user.is_authenticated %}
+        <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus">New</span></a>
+        <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit">Draft</span></a>
+        <p class="top-menu">Hello {{user.username}} <small>(<a href="{% url 'logout' %}">Logout</a>)</small></p>
+        {% else %}
+        <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock">Login</span></a>
+        {% endif %}
+        <h1><a href="/">Django Girls Blog</a></h1>
+    </div>
+  <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+ <small>
+(<a href="{% url 'logout' %}">logout</a>)
+</small>
+
+
+Ninapo edit draft message, nikisave inakuwa published directly. Save button ya Edit inajaza published date
+
+
+
+(myvenv) C:\Users\User\Django\djangogirls>python manage.py makemigrations
+System check identified some issues:
+
+WARNINGS:
+?: (wagtailadmin.W003) The WAGTAILADMIN_BASE_URL setting is not defined
+        HINT: This should be the base URL used to access the Wagtail admin site. Without this, URLs in notification emails will not display correctly.
+blog.BlogPage.author: (wagtailcore.W001) Field hasn't specified on_delete action
+        HINT: Set on_delete=models.SET_NULL and make sure the field is nullable or set on_delete=models.PROTECT. Wagtail does not allow simple database CASCADE because it will corrupt its tree storage.
+It is impossible to add a non-nullable field 'author' to blogpage without specifying a default. This is because the database needs something to populate existing rows.
+Please select a fix:
+ 1) Provide a one-off default now (will be set on all existing rows with a null value for this column)
+ 2) Quit and manually define a default value in models.py.
+Select an option: 2
